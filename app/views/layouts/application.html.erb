@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Heapp</title>
+    <title>housser-app</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all'%>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <div class="area"></div>
+    <nav class="main-menu">
+            <ul>
+                <li>
+                    <i class="fa fa-home fa-2x"></i>
+                    <%= link_to "Home", root_path, class:"nav-text" %>
+                </li>
+                <li class="has-subnav">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <%= link_to "Home", root_path, class:"nav-text" %>
+                </li>
+                <li class="has-subnav">
+                       <i class="fa fa-list fa-2x"></i>    
+                       <%= link_to "Home", root_path, class:"nav-text" %>        
+                </li>
+                <li class="has-subnav">
+                       <i class="fa fa-folder-open fa-2x"></i>
+                       <%= link_to "Home", root_path, class:"nav-text" %>     
+                </li>
+                <li>
+                  <i class="fa fa-pencil fa-2x"></i>
+                  <%= link_to "Post", root_path, class:"nav-text" %>
+                </li>
+                <li>
+                  <i class="fa fa-users fa-2x"></i>
+                  <%= link_to "SignIn（オーナー）", new_owner_registration_path, class:"nav-text" %>
+                </li>
+                <li>
+                  <i class="fa fa-user fa-2x"></i>
+                  <%= link_to "SignIn（入居希望者）", new_user_registration_path, class:"nav-text" %>
+                </li>
+                <li>
+                  <i class="fa fa-sign-in fa-2x"></i>
+                  <%= link_to "Login（オーナー）", new_owner_session_path, class:"nav-text" %>
+                </li>
+                <li>
+                  <i class="fa fa-sign-in fa-2x"></i>
+                  <%= link_to "Login（入居希望者）", new_user_session_path, class:"nav-text" %>
+                </li>
+            </ul>
+            <% if owner_signed_in? || user_signed_in? %>
+            <ul class="logout">
+                <li>
+                <% if owner_signed_in? %>
+                  <i class="fa fa-power-off fa-2x"></i>
+                  <%= link_to "Log out", destroy_owner_session_path ,:method => :delete, class:"nav-text" %>
+                <% else user_signed_in? %>
+                  <i class="fa fa-power-off fa-2x"></i>
+                  <%= link_to "Log out", destroy_user_session_path ,:method => :delete, class:"nav-text" %>
+                <% end %>
+                </li>  
+            </ul>
+            <% end %>
+        </nav>
     <%= yield %>
   </body>
 </html>
