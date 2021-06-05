@@ -14,51 +14,51 @@
     <nav class="main-menu">
             <ul>
                 <li>
-                    <i class="fa fa-home fa-2x"></i>
-                    <%= link_to "Home", root_path, class:"nav-text" %>
+                  <i class="fa fa-home fa-2x"></i>
+                  <%= link_to "Home", root_path, class:"nav-text" %>
                 </li>
                 <li class="has-subnav">
-                        <i class="fa fa-laptop fa-2x"></i>
-                        <%= link_to "Home", root_path, class:"nav-text" %>
+                  <i class="fa fa-laptop fa-2x"></i>
+                  <%= link_to "Home", root_path, class:"nav-text" %>
                 </li>
                 <li class="has-subnav">
-                       <i class="fa fa-list fa-2x"></i>    
-                       <%= link_to "Home", root_path, class:"nav-text" %>        
+                  <i class="fa fa-list fa-2x"></i>    
+                  <%= link_to "Home", root_path, class:"nav-text" %>        
                 </li>
                 <li class="has-subnav">
-                       <i class="fa fa-folder-open fa-2x"></i>
-                       <%= link_to "Home", root_path, class:"nav-text" %>     
+                  <i class="fa fa-folder-open fa-2x"></i>
+                  <%= link_to "Home", root_path, class:"nav-text" %>     
                 </li>
+                <% if owner_signed_in? %>
                 <li>
                   <i class="fa fa-pencil fa-2x"></i>
-                  <%= link_to "Post", root_path, class:"nav-text" %>
+                  <%= link_to "物件を投稿して募集する", new_post_path, class:"nav-text" %>
                 </li>
+                <% end %>
                 <li>
                   <i class="fa fa-users fa-2x"></i>
-                  <%= link_to "SignIn（オーナー）", new_owner_registration_path, class:"nav-text" %>
+                  <%= link_to "新規登録（オーナー）", new_owner_registration_path, class:"nav-text" %>
                 </li>
                 <li>
                   <i class="fa fa-user fa-2x"></i>
-                  <%= link_to "SignIn（入居希望者）", new_user_registration_path, class:"nav-text" %>
+                  <%= link_to "新規登録（入居希望者）", new_user_registration_path, class:"nav-text" %>
                 </li>
                 <li>
                   <i class="fa fa-sign-in fa-2x"></i>
-                  <%= link_to "Login（オーナー）", new_owner_session_path, class:"nav-text" %>
+                  <%= link_to "ログイン（オーナー）", new_owner_session_path, class:"nav-text" %>
                 </li>
                 <li>
                   <i class="fa fa-sign-in fa-2x"></i>
-                  <%= link_to "Login（入居希望者）", new_user_session_path, class:"nav-text" %>
+                  <%= link_to "ログイン（入居希望者）", new_user_session_path, class:"nav-text" %>
                 </li>
-            </ul>
-            <% if owner_signed_in? || user_signed_in? %>
-            <ul class="logout">
+                <% if owner_signed_in? || user_signed_in? %>
                 <li>
                 <% if owner_signed_in? %>
                   <i class="fa fa-power-off fa-2x"></i>
-                  <%= link_to "Log out", destroy_owner_session_path ,:method => :delete, class:"nav-text" %>
+                  <%= link_to "ログアウト", destroy_owner_session_path ,:method => :delete, class:"nav-text" %>
                 <% else user_signed_in? %>
                   <i class="fa fa-power-off fa-2x"></i>
-                  <%= link_to "Log out", destroy_user_session_path ,:method => :delete, class:"nav-text" %>
+                  <%= link_to "ログアウト", destroy_user_session_path ,:method => :delete, class:"nav-text" %>
                 <% end %>
                 </li>  
             </ul>
