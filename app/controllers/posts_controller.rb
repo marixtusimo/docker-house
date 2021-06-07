@@ -19,6 +19,10 @@ class PostsController < ApplicationController
         end
     end
 
+    def show
+        @post = Post.find(params[:id])
+    end
+
     private
     def post_params
         params.require(:post).permit(:title, :station, :price, :access, :floor, :construction, :location, :build, :security, :equipment, :facility, :image).merge(owner_id: current_owner.id)
