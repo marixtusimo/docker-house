@@ -1,0 +1,19 @@
+<div class="post-list">
+<% @posts.each do |post| %>
+ <%= link_to post_path(post.id) do %>
+  <div class="skill-card">
+    <header class="skill-card__header"><%= image_tag post.image, class: "post-img" %></header>
+    <section class="skill-card__body">
+      <div class="skill-card__title"><%= post.title %></div><span class="skill-card__duration">投稿者<%= post.owner.name %></span>
+      <ul class="skill-card__knowledge">
+        <li><%= post.access %></li>
+        <li>家賃:<%= post.price %>円</li>
+        <li>最寄り駅:<%= post.station %></li>
+        <li>間取り:<%= post.floor %></li>
+        <li>物件の詳細をクリックしてみる</li>
+      </ul>
+    </section>
+  </div>
+ <%end%>
+<%end%>
+</div>
