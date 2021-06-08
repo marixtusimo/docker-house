@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    before_action :authenticate_owner!, except: [:show, :index, :main]#サインインしていなくても閲覧可能
+    before_action :set_post, only: [:show, :edit, :update, :destroy]#一緒のコードを一つにまとめる
     def main
     end
     
@@ -20,15 +22,15 @@ class PostsController < ApplicationController
     end
 
     def show
-        @post = Post.find(params[:id])
     end
 
     def edit
-        @post = Post.find(params[:id])
+        unless current_owner == @post.owner#投稿者本人でなければ編集画面に遷移できない
+            redirect_to action: :index
+        end
     end
 
     def update
-        @post = Post.find(params[:id])
         if @post.update(post_params)
             redirect_to post_path(@post)
         else
@@ -37,7 +39,6 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        @post = Post.find(params[:id])
         @post.destroy
         redirect_to posts_path
     end
@@ -45,5 +46,9 @@ class PostsController < ApplicationController
     private
     def post_params
         params.require(:post).permit(:title, :station, :price, :access, :floor, :construction, :location, :build, :security, :equipment, :facility, :image).merge(owner_id: current_owner.id)
+    end
+    
+    def set_post
+        @post = Post.find(params[:id])
     end
 end
