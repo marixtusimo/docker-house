@@ -1,5 +1,12 @@
 <div class="post-img-content">
-      <%= image_tag @post.image ,class:"item-box-img" %>
+      <%= image_tag @post.image ,class:"post-box-img" %>
+</div>
+<div class="owner-btn">
+<div class="flex-grid-center">
+<%= link_to "物件の編集", edit_post_path(@post.id), method: :get, class: "pure-button fuller-button white" %>
+or
+<%= link_to "削除", post_path(@post.id), method: :delete, class:"pure-button fuller-button white" %>
+</div>
 </div>
 <table class="detail-table">
       <tbody>

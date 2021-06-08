@@ -1,0 +1,72 @@
+<%= form_with model: @post, local: true do |f| %>
+<div class="container">
+  <form>
+    <div class="row">
+      <h4 class="header-title">Pots It</h4>
+      <div class="post-text">物件画像</div>
+      <div class="input-group input-group-icon">
+        <%= f.file_field :image, class: "form-control" , id:"item-image"%>
+        <div class="input-icon"><i class="material-icons">photo</i></div>
+      </div>
+      <div class="post-text">物件名</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :title, class: "form-control", placeholder:"例）〇〇アパート", maxlength:"40" %>
+        <div class="input-icon"><i class="material-icons">house</i></div>
+      </div>
+      <div class="post-text">最寄り駅</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :station, class: "form-control", placeholder:"例）〇〇駅", maxlength:"40" %>
+        <div class="input-icon"><i class="material-icons">train</i></div>
+      </div>
+      <div class="post-text">家賃（１ヶ月分）</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :price, class: "form-control",id:"item-text", placeholder:"例）50000(全角不可)", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">money</i></div>
+      </div>
+      <div class="post-text">アクセス</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :access, class: "form-control",id:"item-text", placeholder:"例）〇駅から徒歩〇分", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">directions_walk</i></div>
+      </div>
+      <div class="post-text">間取り</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :floor, class: "form-control",id:"item-text", placeholder:"例）1LDK", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">event_seat</i></div>
+      </div>
+      <div class="post-text">築年数</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :construction, class: "form-control",id:"item-text", placeholder:"例）築年数〇年", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">format_paint</i></div>
+      </div>
+      <div class="post-text">物件住所</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :location, class: "form-control",id:"item-text", placeholder:"例）物件の所在地を記載", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">room</i></div>
+      </div>
+      <div class="post-text">建物構造</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :build, class: "form-control",id:"item-text", placeholder:"例）木造建築", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">build</i></div>
+      </div>
+      <div class="post-text">セキュリティー</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :security, class: "form-control",id:"item-text", placeholder:"例）玄関にオートロックあり", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">security</i></div>
+      </div>
+      <div class="post-text">備え付け備品</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :equipment, class: "form-control",id:"item-text", placeholder:"例）冷蔵庫あり、家具あり", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">weekend</i></div>
+      </div>
+      <div class="post-text">設備</div>
+      <div class="input-group input-group-icon">
+        <%= f.text_field :facility, class: "form-control",id:"item-text", placeholder:"例）風呂トイレ別", maxlength:"60" %>
+        <div class="input-icon"><i class="material-icons">room_service</i></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.submit "変更する", class: "btn" %>
+    </div>
+  </form>
+</div>
+<% end %>
