@@ -13,7 +13,13 @@ class Post < ApplicationRecord
         validates :facility
         validates :image
     end
-
     has_one_attached :image
     belongs_to :owner
+    def self.search(search)
+        if search != ''
+            Post.where('station LIKE(?)', "%#{search}%")
+        else
+            Post.all
+        end
+    end
 end
