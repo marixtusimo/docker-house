@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Owners::PasswordsController < Devise::PasswordsController
+  before_action :ensure_normal_owner, only: :create
   # GET /resource/password/new
   # def new
   #   super
@@ -31,4 +32,10 @@ class Owners::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  def ensure_normal_owner
+    if params[:owner][:email].downcase == 'guest@example.com'
+      redirect_to new_owner_session_path, alert: 'ゲストユーザーのパスワード再設定はできません。'
+    end
+  end
 end

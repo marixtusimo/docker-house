@@ -51,6 +51,14 @@
                   <i class="fa fa-sign-in fa-2x"></i>
                   <%= link_to "ログイン（入居希望者）", new_user_session_path, class:"nav-text" %>
                 </li>
+                <li>
+                  <i class="fa fa-sign-in fa-2x"></i>
+                  <%= link_to 'ゲストログイン（入居希望者）', users_guest_sign_in_path, class:"nav-text", method: :post %>
+                </li>
+                <li>
+                  <i class="fa fa-sign-in fa-2x"></i>
+                  <%= link_to 'ゲストログイン(オーナー)', owners_guest_sign_in_path, class:"nav-text", method: :post %>
+                </li>
                 <% if owner_signed_in? || user_signed_in? %>
                 <li>
                 <% if owner_signed_in? %>
