@@ -15,6 +15,8 @@ class Post < ApplicationRecord
     end
     has_one_attached :image
     belongs_to :owner
+    has_many :likes, dependent: :destroy
+    has_many :liked_users, through: :likes, source: :user
     def self.search(search)
         if search != ''
             Post.where('station LIKE(?)', "%#{search}%")

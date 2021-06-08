@@ -45,6 +45,15 @@ or
         <tr>
           <th class="detail-post">設備</th>
           <td class="detail-value"><%= @post.facility %></td>
+        <% if user_signed_in? %>
+        <th class="detail-post">物件にイイネする</th>
+        <td class="detail-value">
+        <div id = "like_<%= @post.id %>">
+          <%= render partial: "likes/like", locals: { post: @post } %>
+        </div>
+        </td>
+        <%end%>
         </tr>
       </tbody>
     </table>
+ 
